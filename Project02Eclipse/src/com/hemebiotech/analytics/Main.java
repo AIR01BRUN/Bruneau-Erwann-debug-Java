@@ -12,13 +12,13 @@ public class Main {
 		ISymptomWriter writer = new WriteSymptomDataToFile();
 		
 		AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader,writer);
-		List<String> symptoms = analyticsCounter.getSymptoms();
 		
-		Map<String, Integer> mapCountSym = analyticsCounter.countSymptoms(symptoms);
-		Map<String, Integer> mapSortSym  = analyticsCounter.sortSymptoms(mapCountSym);
+		List<String> symptoms = analyticsCounter.getSymptoms();//Récupère les symptômes
+		Map<String, Integer> mapCountSym = analyticsCounter.countSymptoms(symptoms);//Compte les symptômes identiques
+		Map<String, Integer> mapSortSym  = analyticsCounter.sortSymptoms(mapCountSym);//Trie les symptômes par ordre alphabétique croissant
 		
 		
-		analyticsCounter.writeSymptoms(mapSortSym);
+		analyticsCounter.writeSymptoms(mapSortSym);//Ecris un fjcier text avec les symptome
 	}
 
 }
