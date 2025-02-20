@@ -22,7 +22,7 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 	public void writeSymptoms(Map<String, Integer> symptoms) {
 		
 		try {
-			FileWriter writer = new FileWriter ("result.out.txt");
+			FileWriter writer = new FileWriter ("result.out");
 			
 			for(String symptomsKey : symptoms.keySet()){
 				
