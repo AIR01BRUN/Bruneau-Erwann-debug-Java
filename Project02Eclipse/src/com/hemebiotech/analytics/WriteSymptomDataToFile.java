@@ -23,8 +23,13 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 			
 			for(String symptomsKey : symptoms.keySet()){
 				
-				writer.write(symptomsKey +":"+ symptoms.get(symptomsKey));
+				
+					System.out.print( "::"+symptomsKey+":  "+  symptoms.get(symptomsKey)+" \n ");
+				
+				writer.write(symptomsKey +":"+ symptoms.get(symptomsKey)+"\n");
+				
 			}
+			writer.close();
 		} catch (IOException e) {
 			
 			e.printStackTrace();

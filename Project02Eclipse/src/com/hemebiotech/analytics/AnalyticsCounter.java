@@ -8,11 +8,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	
-	private static int rashCount = 0;		
-	private static int  highBloodPressureCount = 0;		
 	
 	
 	/*----------------------------------------------------------*/
@@ -32,27 +30,26 @@ public class AnalyticsCounter {
 		Map<String, Integer> mapSymptoms = new HashMap<>(); 
 		
 		for(String symptom : symptoms) {
-			if(mapSymptoms.containsKey(symptom)) {
+			
+			if(mapSymptoms.containsKey(symptom) ) {
+				
 				mapSymptoms.replace(symptom, mapSymptoms.get(symptom)+1 );
+				
 			}else {
 				mapSymptoms.put(symptom,1);
 			}
+			
+			
 		}
-		
+		//System.out.print( mapSymptoms.entrySet());
 		return mapSymptoms ;
 	}
 	
 	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) { 
-		Map<String, Integer> mapSymptoms = new HashMap<>();
 		
-		  ArrayList<String> sortedKeys = new ArrayList<String>(symptoms.keySet());
-
-		  Collections.sort(sortedKeys);
-		  
-		  for(String key : sortedKeys) {
-			  mapSymptoms.put(key,symptoms.get(key));
-		  }
-		
+		TreeMap<String, Integer> sort = new TreeMap<>(symptoms);
+	
+		Map<String, Integer> mapSymptoms = sort;
 		return mapSymptoms ;
 	}
 	
@@ -60,6 +57,11 @@ public class AnalyticsCounter {
 		writer.writeSymptoms(symptoms);
 	}
 	/*----------------------------------------------------------*/
+	
+	/*
+	private static int headacheCount = 0;	
+	private static int rashCount = 0;		
+	private static int  highBloodPressureCount = 0;	
 	
 	public static void main(String args[]) throws Exception {
 		// first get input
@@ -89,5 +91,5 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("high blood pressure: " +  highBloodPressureCount + "\n");
 		writer.close();
-	}
+	}*/
 }
