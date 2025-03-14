@@ -5,20 +5,21 @@ import java.util.Map;
 
 public class Main {
 
-	
+	private static String pathRead = "symptoms.txt";
+	private static String pathWrite = "result.out";
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
-		ISymptomWriter writer = new WriteSymptomDataToFile();
-		
-		AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader,writer);
-		
-		List<String> symptoms = analyticsCounter.getSymptoms();//Récupère les symptômes
-		Map<String, Integer> mapCountSym = analyticsCounter.countSymptoms(symptoms);//Compte les symptômes identiques
-		Map<String, Integer> mapSortSym  = analyticsCounter.sortSymptoms(mapCountSym);//Trie les symptômes par ordre alphabétique croissant
-		
-		
-		analyticsCounter.writeSymptoms(mapSortSym);//Ecris un fjcier text avec les symptome
+
+		ISymptomReader reader = new ReadSymptomDataFromFile(pathRead);
+		ISymptomWriter writer = new WriteSymptomDataToFile(pathWrite);
+
+		AnalyticsCounter analyticsCounter = new AnalyticsCounter(reader, writer);
+
+		List<String> symptoms = analyticsCounter.getSymptoms();
+		Map<String, Integer> mapCountSym = analyticsCounter.countSymptoms(symptoms);
+		Map<String, Integer> mapSortSym = analyticsCounter.sortSymptoms(mapCountSym);
+
+		analyticsCounter.writeSymptoms(mapSortSym);
 	}
 
 }
